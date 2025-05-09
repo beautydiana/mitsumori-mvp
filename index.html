@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>見積書を、ぶっ壊す！ | ミツモリ鑑定団</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"/>
+<style>
+        /* 全体のスタイル */
+        :root {
+            --main-color: #ff4d4d;
+            --accent-color: #ff9900;
+            --dark-color: #333333;
+            --light-color: #f8f9fa;
+            --success-color: #00cc66;
+            --line-color: #06C755;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
+        }
+        
+        body {
+            background-color: #f0f0f0;
+            color: var(--dark-color);
+            line-height: 1.6;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+        
+        @media (min-width: 768px) {
+            body {
+                font-size: 18px;
+            }
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ======= ヒーローセクション ======= */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #ff4d4d 0%, #ff9900 100%);
+            color: white;
+            padding: 3rem 1rem 6rem;
+            text-align: center;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .decoration-circle {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            top: -50px;
+            right: -50px;
+            z-index: 0;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .decoration-circle2 {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            bottom: 20px;
+            left: 10%;
+            z-index: 0;
+            animation: float 12s infinite ease-in-out reverse;
+        }
+        
+        .main-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 0 auto 0.5rem;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+            animation: bounce 1s ease-out;
+            padding: 0 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .main-title {
+                font-size: 3.5rem;
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-out;
+            padding: 0 1rem;
+        }
+        
+        .catchphrase {
+            background-color: white;
+            color: var(--main-color);
+            font-weight: bold;
+            font-size: 1.4rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            margin: 0 auto 2.5rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            max-width: 90%;
+            animation: slideInUp 1.2s ease-out;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .sale-badge {
+            background: #ffff00;
+            color: #ff0000;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            display: inline-block;
+            transform: rotate(-3deg);
+            margin: 0.5rem auto;
+            font-weight: 900;
+            font-size: 1.6rem;
+            border: 3px dashed #ff0000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .badge-corner {
+            position: absolute;
+            top: -10px;
+            right: -20px;
+            background: #ff0000;
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(15deg);
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        /* ======= 対話バブル ======= */
+        .dialogue-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+        
+        .dialogue-bubble {
+            position: relative;
+            padding: 1.2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid #fff;
+            z-index: 2;
+        }
+        
+        .dialogue-bubble.company {
+            background-color: #fffbeb;
+            margin-left: 60px;
+            text-align: left;
+            animation: slideInRight 0.5s ease-out;
+        }
+        
+        .dialogue-bubble.customer {
+            background-color: #f0f0f0;
+            margin-right: 60px;
+            text-align: right;
+            animation: slideInLeft 0.5s ease-out 0.3s both;
+        }
+        
+        .dialogue-bubble.agent {
+            background-color: #ffebeb;
+            margin-left: 60px;
+            text-align: left;
+            animation: slideInRight 0.5s ease-out 0.6s both;
+            overflow: hidden;
+        }
+        
+        .dialogue-avatar {
+            position: absolute;
+            top: calc(50% - 35px);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .company .dialogue-avatar {
+            left: -60px;
+        }
+        
+        .customer .dialogue-avatar {
+            right: -60px;
+        }
+        
+        .agent .dialogue-avatar {
+            left: -60px;
+        }
+        
+        .dialogue-pointer {
+            position: absolute;
+            top: calc(50% - 10px);
+            width: 20px;
+            height: 20px;
+            transform: rotate(45deg);
+            border: 2px solid #fff;
+            z-index: 1;
+        }
+        
+        .company .dialogue-pointer {
+            left: -10px;
+            background-color: #fffbeb;
+            border-right: none;
+            border-top: none;
+        }
+        
+        .customer .dialogue-pointer {
+            right: -10px;
+            background-color: #f0f0f0;
+            border-left: none;
+            border-bottom: none;
+        }
+        
+        .agent .dialogue-pointer {
+            left: -10px;
+            background-color: #ffebeb;
+            border-right: none;
+            border-top: none;
+        }
+        
+        .dialogue-name {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .dialogue-text {
+            margin: 0.5rem 0 0 0;
+            color: #000;
+        }
+        
+        .agent .dialogue-text {
+            font-weight: bold;
+        }
+        
+        .highlight-red {
+            font-weight: bold;
+            color: #ff4d4d;
+            text-decoration: underline;
+        }
+        
+        .highlight-italic {
+            font-weight: bold;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .badge-text {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 0.1rem 0.3rem;
+            border-radius: 4px;
+        }
+        
+        .badge-text.green {
+            background-color: #00cc66;
+        }
+        
+        /* ======= CTA ボタン ======= */
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin: 0 auto;
+            max-width: 500px;
+            padding: 0 1rem;
+            animation: fadeIn 1s ease-out 1s both;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1.2rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.3rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-line {
+            background-color: var(--line-color);
+            color: white;
+        }
+        
+        .btn-upload {
+            background-color: white;
+            color: var(--main-color);
+        }
+        
+        .shimmer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+        
+        .btn-line:hover .shimmer {
+            animation: shimmer 1.5s infinite;
+        }
+        
+        .btn-text {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* ======= スクロールインジケーター ======= */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.8);
+            font-weight: bold;
+            animation: bounce 2s infinite 2s;
+            text-align: center;
+        }
+        
+        .scroll-indicator-arrow {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        /* ======= インフォバナー ======= */
+        .info-banner-wrapper {
+            max-width: 1000px;
+            margin: -60px auto 0;
+            padding: 0 20px 80px;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .info-banner {
+            position: relative;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+            margin-bottom: 80px;
+        }
+        
+        .info-banner-header {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1.8rem 1.5rem 2.5rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: relative;
+        }
+        
+        .info-highlight {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.2rem 0.8rem;
+            border-radius: 5px;
+        }
+        
+        .info-sub {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        
+        .tags-container {
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .tag-red {
+            background-color: var(--main-color);
+            color: white;
+            transform: rotate(-2deg);
+            animation: pulse 2s infinite;
+            box-shadow: 0 3px 10px rgba(255, 77, 77, 0.3);
+        }
+        
+        .tag-blue {
+            background-color: #00aaff;
+            color: white;
+            transform: rotate(1deg);
+            box-shadow: 0 3px 10px rgba(0, 170, 255, 0.3);
+        }
+        
+        /* ======= おすすめセクション ======= */
+        .recommend-section {
+            background-color: #f8f4e6;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: -40px;
+            margin-bottom: 80px;
+            text-align: center;
+            border: 3px dashed #eb9c3c;
+            position: relative;
+        }
+        
+        .recommend-title {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #eb9c3c;
+            color: white;
+            padding: 0.5rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .recommend-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .recommend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .recommend-check {
+            font-size: 1.5rem;
+        }
+        
+        /* ======= コンテンツエリア ======= */
+        .content-area {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 4;
+        }
+        
+        /* ======= セクション共通 ======= */
+        .section {
+            background-color: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section.accent {
+            background: linear-gradient(135deg, #ffebeb 0%, #fff6eb 100%);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: var(--main-color);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--main-color);
+            border-radius: 2px;
+        }
+        
+        /* ======= ケーススタディ ======= */
+        .case-study-nav {
+            text-align: center;
+            margin: 1rem 0 2rem;
+        }
+        
+        .case-dots {
+            display: inline-flex;
+            gap: 1rem;
+        }
+        
+        .case-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .case-dot.active {
+            background-color: var(--main-color);
+        }
+        
+        .case-container {
+            background-color: #f8f9ff;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 1rem 0 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            min-height: 400px;
+        }
+        
+        .case-badge {
+            background-color: var(--main-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: bold;
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            z-index: 2;
+        }
+        
+        .case-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px dashed #ddd;
+        }
+        
+        .case-action {
+            color: var(--main-color);
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .case-result {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .time-badge {
+            background-color: #333;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .offer {
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .offer.best {
+            background-color: #f0fff0;
+            border: 2px solid var(--success-color);
+            transform: scale(1.05);
+        }
+        
+        .offer-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .offer.best .offer-price {
+            color: var(--success-color);
+        }
+        
+        .offer-details {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .original-company {
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: #999;
+            text-align: right;
+        }
+        
+        .case-summary {
+            margin-top: 1.5rem;
+            text-align: center;
+            color: var(--success-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .case-location {
+            display: inline-block;
+            font-size: 0.9rem;
+            color: #666;
+            margin-left: 0.5rem;
+        }
+        
+        .case-next {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+        .case-next-btn {
+            background-color: white;
+            color: var(--main-color);
+            border: 2px solid var(--main-color);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .case-next-btn:hover {
+            background-color: var(--main-color);
+            color: white;
+        }
+        
+        .success-rate {
+            text-align: center;
+            font-weight: bold;
+            color: var(--success-color);
+            margin: 0 auto;
+            padding: 0.5rem;
+            max-width: 300px;
+            background: #f0fff0;
+            border-radius: 5px;
+            border: 1px dashed var(--success-color);
+        }
+        
+        /* ======= 実績一覧 ======= */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-tag {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(2deg);
+        }
+        
+        .testimonial-quote {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-price {
+            background-color: var(--success-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #666;
+        }
+        
+        .author-name {
+            font-weight: bold;
+        }
+        
+        .author-details {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        /* ======= よくある質問 ======= */
+        .faq {
+            margin-top: 2rem;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1.5rem;
+        }
+        
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 2rem;
+            color: var(--dark-color);
+        }
+        
+        .faq-question::before {
+            content: "Q.";
+            position: absolute;
+            left: 0;
+            color: var(--main-color);
+            font-weight: bold;
+        }
+        
+        .faq-answer {
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .faq-answer::before {
+            content: "A.";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+        
+        /* ======= CTA セクション ======= */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, var(--main-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: white;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+        }
+        
+        .cta-paragraph {
+            margin-bottom: 2rem;
+        }
+        
+        .cta-btn-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-btn {
+            padding: 1.2rem 2.5rem;
+            font-size: 1.2rem;
+            min-width: 250px;
+        }
+        
+        @media (min-width: 768px) {
+            .cta-btn-group {
+                flex-direction: row;
+                justify-content: center;
+                gap: 2rem;
+            }
+        }
+        
+        .social-share {
+            margin-top: 2rem;
+        }
+        
+        .share-text {
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .hashtag-large {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: inline-block;
+            margin: 0.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .hashtag-large:hover {
+            background-color: rgba(255,255,255,0.3);
+            transform: scale(1.05);
+        }
+        
+        /* ======= フッター ======= */
+        .footer {
+            text-align: center;
+            background-color: white;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .mission-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+        
+        .mission-text {
+            font-weight: bold;
+            margin: 1.5rem 0;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        .fire-hashtag {
+            background-color: var(--main-color);
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: white;
+            margin-top: 1.5rem;
+            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .fire-hashtag:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(255, 77, 77, 0.4);
+        }
+        
+        .company-info {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: #999;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .company-info p {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* ======= スクローラー ======= */
+        .scroll-to-top {
+            position: fixed;position: fixed;
+           bottom: 20px;
+           right: 20px;
+           width: 50px;
+           height: 50px;
+           background-color: var(--main-color);
+           color: white;
+           border-radius: 50%;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           cursor: pointer;
+           box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+           opacity: 0;
+           transform: translateY(20px);
+           transition: all 0.3s;
+           z-index: 100;
+       }
+       
+       .scroll-to-top.visible {
+           opacity: 1;
+           transform: translateY(0);
+       }
+       
+       .scroll-to-top:hover {
+           background-color: var(--accent-color);
+           transform: translateY(-5px);
+       }
+       
+       /* ======= アニメーション ======= */
+       @keyframes fadeIn {
+           from { opacity: 0; }
+           to { opacity: 1; }
+       }
+       
+       @keyframes slideInRight {
+           from { transform: translateX(50px); opacity: 0; }
+           to { transform: translateX(0); opacity: 1; }
+       }
+       
+       @keyframes slideInLeft {
+           from { transform: translateX(-50px); opacity: 0; }
+           to { transform: translateX(0); opacity: 1; }
+       }
+       
+       @keyframes slideInUp {
+           from { transform: translateY(20px); opacity: 0; }
+           to { transform: translateY(0); opacity: 1; }
+       }
+       
+       @keyframes bounce {
+           0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+           40% { transform: translateY(-15px) translateX(-50%); }
+           60% { transform: translateY(-7px) translateX(-50%); }
+       }
+       
+       @keyframes pulse {
+           0% { transform: scale(1) rotate(-2deg); }
+           50% { transform: scale(1.05) rotate(-1deg); }
+           100% { transform: scale(1) rotate(-2deg); }
+       }
+       
+       @keyframes float {
+           0% { transform: translateY(0) rotate(0deg); }
+           50% { transform: translateY(-20px) rotate(5deg); }
+           100% { transform: translateY(0) rotate(0deg); }
+       }
+       
+       @keyframes shimmer {
+           0% { transform: translateX(-100%); }
+           100% { transform: translateX(100%); }
+       }
+       
+       .fade-in {
+           opacity: 0;
+           transform: translateY(20px);
+           transition: opacity 0.8s, transform 0.8s;
+       }
+       
+       .fade-in.visible {
+           opacity: 1;
+           transform: translateY(0);
+       }
+       
+       .scale-in {
+           opacity: 0;
+           transform: scale(0.8);
+           transition: opacity 0.8s, transform 0.8s;
+       }
+       
+       .scale-in.visible {
+           opacity: 1;
+           transform: scale(1);
+       }
+       
+       /* ======= レスポンシブ対応 ======= */
+       @media (max-width: 768px) {
+           .main-title {
+               font-size: 2.5rem;
+           }
+           
+           .subtitle {
+               font-size: 1.3rem;
+           }
+           
+           .catchphrase {
+               font-size: 1.2rem;
+               padding: 0.8rem 1.5rem;
+           }
+           
+           .sale-badge {
+               font-size: 1.4rem;
+           }
+           
+           .section-title {
+               font-size: 1.8rem;
+           }
+           
+           .case-title {
+               font-size: 1.5rem;
+           }
+           
+           .testimonials {
+               grid-template-columns: 1fr;
+           }
+           
+           .cta-title {
+               font-size: 2rem;
+           }
+           
+           .dialogue-container {
+               gap: 2rem;
+           }
+           
+           .dialogue-bubble {
+               margin-left: 50px;
+               margin-right: 50px;
+           }
+           
+           .dialogue-avatar {
+               width: 60px;
+               height: 60px;
+               top: calc(50% - 30px);
+           }
+           
+           .company .dialogue-avatar,
+           .agent .dialogue-avatar {
+               left: -50px;
+           }
+           
+           .customer .dialogue-avatar {
+               right: -50px;
+           }
+       }
+   
+/* ======= 追従バナーCSS ======= */
+.line-fixed-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0);
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.line-banner-button {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: linear-gradient(135deg, #06C755 0%, #00B14F 100%);
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    border-radius: 999px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(6px);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.line-banner-button .icon {
+    font-size: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+.line-banner-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    transform: skewX(-30deg);
+    transition: all 0.5s ease;
+}
+
+.line-banner-button:hover::after {
+    left: 100%;
+}
+
+@media (min-width: 768px) {
+    .line-fixed-banner {
+        display: none;
+    }
+}
+
+</style>
+</head>
+<body>
+<!-- ヒーローセクション -->
+<div class="hero">
+<div class="decoration-circle"></div>
+<div class="decoration-circle2"></div>
+<div class="hero-content">
+<h1 class="main-title">🔥 見積書を<br/>ぶっ壊す！ 🔥</h1>
+<div class="subtitle">🕵️‍♂️💰 ミツモリ鑑定団 💰🕵️‍♀️</div>
+<div class="catchphrase" style="margin: 0 auto 2.5rem; text-align: center;">
+               写真一枚送るだけ、業者同士が競い合って
+               <div class="sale-badge">
+                   最大50%OFF！
+                   <div class="badge-corner">激安</div>
+</div>
+</div>
+<!-- マンガ風対話セクション -->
+<div class="dialogue-container">
+<!-- 業者のセリフ -->
+<div class="dialogue-bubble company">
+<div class="dialogue-avatar">😈</div>
+<div class="dialogue-pointer"></div>
+<p class="dialogue-name">リフォーム業者</p>
+<p class="dialogue-text">「このお客さん、素人だな。標準工事に<span class="highlight-red">50万上乗せ</span>しても気づかないだろ...ふふふ」</p>
+</div>
+<!-- あなたのセリフ -->
+<div class="dialogue-bubble customer">
+<div class="dialogue-avatar">😰</div>
+<div class="dialogue-pointer"></div>
+<p class="dialogue-name">あなた</p>
+<p class="dialogue-text">「92万円...高いような気がするけど、<span class="highlight-italic">相場がわからないから判断できない</span>...どうしよう」</p>
+</div>
+<!-- 鑑定団のセリフ -->
+<div class="dialogue-bubble agent">
+<div class="dialogue-avatar">🔥</div>
+<div class="dialogue-pointer"></div>
+<p class="dialogue-name">鑑定団</p>
+<p class="dialogue-text">「この見積書、<span class="badge-text">粉々にぶっ壊して</span>やろう！我々の提携業者たちに<span class="badge-text green">競わせれば適正価格</span>が見えてくる！」</p>
+<div class="shimmer"></div>
+</div>
+</div>
+<!-- CTAボタン -->
+<div class="cta-buttons">
+<a class="btn btn-line" href="https://lin.ee/g62jgxI">
+<span class="btn-text" style="margin-right: 0.5rem;">LINE</span>
+<span class="btn-text">で送る</span>
+<div class="shimmer"></div>
+</a>
+<a class="btn btn-upload" href="https://lin.ee/g62jgxI">
+<span class="btn-text" style="font-size: 1.8rem;">📷</span>
+<span class="btn-text">写真アップ</span>
+</a>
+</div>
+</div>
+<!-- スクロールインジケーター -->
+<div class="scroll-indicator">
+<div class="scroll-indicator-arrow">↓</div>
+<div>詳しく見る</div>
+</div>
+</div>
+<!-- インフォバナー -->
+<div class="info-banner-wrapper">
+<div class="info-banner">
+<div class="info-banner-header">
+<div style="margin-bottom: 0.5rem;">
+                   見積書をぶっ壊して、<span class="info-highlight">適正価格を取り戻せ！</span>
+</div>
+<div class="info-sub">
+                   ※当初は友人間のノリから始まった「見積もりぶっ壊しプロジェクト」が暴走中
+               </div>
+</div>
+<div class="tags-container">
+<div class="tag tag-red">#見積書ぶっ壊し運動 急増中！</div>
+<div class="tag tag-blue">#平均38%の値引き率</div>
+</div>
+</div>
+<!-- おすすめセクション -->
+<div class="recommend-section">
+<div class="recommend-title">こんな方におすすめ</div>
+<div class="recommend-items">
+<div class="recommend-item">
+<span class="recommend-check">✓</span>
+<span>見積もりが高いか不安な人</span>
+</div>
+<div class="recommend-item">
+<span class="recommend-check">✓</span>
+<span>相場がわからなくて困っている人</span>
+</div>
+<div class="recommend-item">
+<span class="recommend-check">✓</span>
+<span>営業マンとの値引き交渉が苦手な人</span>
+</div>
+</div>
+</div>
+</div>
+<!-- コンテンツエリア -->
+<div class="content-area">
+<!-- 見積書、ぶっ壊れる瞬間 -->
+<div class="section fade-in">
+<h2 class="section-title">見積書、ぶっ壊れる瞬間 👇</h2>
+<div class="case-study-nav">
+<div class="case-dots">
+<div class="case-dot active" onclick="changeCase(0)"></div>
+<div class="case-dot" onclick="changeCase(1)"></div>
+<div class="case-dot" onclick="changeCase(2)"></div>
+</div>
+</div>
+<div class="case-container scale-in" id="case-study-container">
+<div class="case-badge">CASE STUDY</div>
+<div class="case-title">お風呂リフォーム見積もり：92万円</div>
+<div class="case-action">鑑定団「この見積書、ぶっ壊しに行くわ」</div>
+<div class="case-result">
+<div class="time-badge">【48時間後...】</div>
+<div class="offers-grid">
+<div class="offer best">
+<div class="offer-price">68万円 ✓</div>
+<div class="offer-details">標準的な素材で十分な品質を確保。コスト削減のポイントを明確に説明。</div>
+</div>
+<div class="offer">
+<div class="offer-price">75万円</div>
+<div class="offer-details">高グレード素材使用。防カビ加工と5年保証付き。</div>
+</div>
+<div class="offer">
+<div class="offer-price">85万円</div>
+<div class="offer-details">プレミアムプラン。保証10年と24時間サポート。</div>
+</div>
+</div>
+<div class="original-company">元業者「ぐぬぬぬぬ...」</div>
+</div>
+<div class="case-summary">
+                   24万円お得！<span class="case-location">（横浜の実家の事例）</span>
+</div>
+<div class="case-next">
+<button class="case-next-btn" onclick="nextCase()">
+                       次の事例を見る →
+                   </button>
+</div>
+</div>
+<div class="success-rate">* ぶっ壊し成功率96.4% *</div>
+</div>
+<!-- 見積書ぶっ壊し実績 -->
+<div class="section fade-in">
+<h2 class="section-title">見積書ぶっ壊し実績 💥</h2>
+<div class="testimonials">
+<div class="testimonial">
+<div class="testimonial-tag">#親子で感謝</div>
+<div class="testimonial-quote">「娘の家のキッチン、業者が出した見積もりが高すぎて不安だったので利用。結果、62万円も安くなりました！」</div>
+<div class="testimonial-price">62万円お得！</div>
+<div class="testimonial-author">
+<div class="author-avatar">母</div>
+<div class="author-info">
+<div class="author-name">母の友達（68歳）</div>
+<div class="author-details">札幌市</div>
+</div>
+</div>
+</div>
+<div class="testimonial">
+<div class="testimonial-tag">#同僚紹介</div>
+<div class="testimonial-quote">「マンションの浴室をユニットバスに変えようとしたら92→52万円に！安くなった分で洗面台も新しくできました」</div>
+<div class="testimonial-price">40万円お得！</div>
+<div class="testimonial-author">
+<div class="author-avatar">同</div>
+<div class="author-info">
+<div class="author-name">同僚（34歳）</div>
+<div class="author-details">東京都</div>
+</div>
+</div>
+</div>
+<div class="testimonial">
+<div class="testimonial-tag">#親を詐欺から救った</div>
+<div class="testimonial-quote">「実家の外壁塗装、親が騙されかけてた…LINEで見積書送っただけで103万円安くなった」</div>
+<div class="testimonial-price">103万円お得！</div>
+<div class="testimonial-author">
+<div class="author-avatar">後</div>
+<div class="author-info">
+<div class="author-name">大学の後輩（28歳）</div>
+<div class="author-details">鹿児島県</div>
+</div>
+</div>
+</div>
+<div class="testimonial">
+<div class="testimonial-tag">#ご近所に拡散中</div>
+<div class="testimonial-quote">「自宅の床張替え、3社から逆オファー来てびっくり。最安値で元見積もりの半額以下になった」</div>
+<div class="testimonial-price">24万円お得！</div>
+<div class="testimonial-author">
+<div class="author-avatar">隣</div>
+<div class="author-info">
+<div class="author-name">隣の家のおじさん（55歳）</div>
+<div class="author-details">大阪府</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- よくある質問と本音回答 -->
+<div class="section accent fade-in">
+<h2 class="section-title">よくある質問と本音回答</h2>
+<div class="faq">
+<div class="faq-item">
+<p class="faq-question">安くなりすぎて不安...手抜き工事とかない？</p>
+<div class="faq-answer">
+<p>ぶっ壊すのは「ボッタクリ価格」だけ。品質は下げません。むしろ粗悪業者を排除してます。提案内容は専門家がチェックして、手抜き工事になる危険性がある提案は除外しています。</p>
+</div>
+</div>
+<div class="faq-item">
+<p class="faq-question">業者は赤字にならないの？</p>
+<div class="faq-answer">
+<p>ならないよ。元の見積もりが高すぎるだけ。適正価格で十分利益出てます。実は多くのリフォーム業者は、「お客さんがどこまで払えるか」で価格を決めているんです。つまり、最初から値引き交渉の余地を残している。</p>
+</div>
+</div>
+<div class="faq-item">
+<p class="faq-question">鑑定士って何者？</p>
+<div class="faq-answer">
+<p>元リフォーム業者、建築士、設計士など「見積書の闇を知りすぎた者たち」。全員「ぼったくり業者が許せない」ってマジギレしてる。業界歴10年以上のベテランが中心で、建築・設備・設計・施工管理など様々な専門分野をカバーしています。</p>
+</div>
+</div>
+<div class="faq-item">
+<p class="faq-question">どうして始めたの？</p>
+<div class="faq-answer">
+<p>友人の見積書チェックしたら「は？200万も利益乗せてる？」ってブチギレたのがきっかけ。SNSで「これはヤバい」と投稿したら反響がすごくて、同じような経験を持つ人が山ほどいることがわかったんです。</p>
+</div>
+</div>
+<div class="faq-item">
+<p class="faq-question">マジで無料なの？これ自体ボッタクリじゃ...？</p>
+<div class="faq-answer">
+<p>完全無料。というか、SNSで「#見積書ぶっ壊し」 拡散してくれるだけでめっちゃ嬉しい。収益モデルは提携業者からの成約報酬。でも悪質な高額請求はしないよう契約で縛ってます。</p>
+</div>
+</div>
+</div>
+</div>
+<!-- CTA セクション -->
+<div class="cta-section">
+<h2 class="cta-title">今すぐ見積書をぶっ壊せ！💥</h2>
+<p class="cta-paragraph">あなたの見積書、いくらぶっ壊せるか試してみませんか？</p>
+<div class="cta-btn-group">
+<a class="btn btn-line cta-btn" href="https://lin.ee/g62jgxI">
+<span class="btn-text" style="margin-right: 0.5rem;">LINE</span>
+<span class="btn-text">で送る</span>
+<div class="shimmer"></div>
+</a>
+<a class="btn btn-upload cta-btn" href="https://lin.ee/g62jgxI">
+<span class="btn-text" style="font-size: 1.8rem;">📷</span>
+<span class="btn-text">写真アップ</span>
+</a>
+</div>
+<div class="social-share">
+<p class="share-text">📱 ぶっ壊し報告はSNSで！</p>
+<div>
+<span class="hashtag-large">#見積書ぶっ壊し</span>
+<span class="hashtag-large">#ミツモリ鑑定団</span>
+</div>
+</div>
+</div>
+</div>
+<!-- フッターメッセージ -->
+<div class="container">
+<div class="footer">
+<h3 class="mission-title">最後に超重要なこと</h3>
+<p>ぶっ壊すのは「ボッタクリ価格」だけ！品質は絶対に守ります。<br/>
+           真面目な業者さんは応援します。悪徳業者だけぶっ壊します。</p>
+<p class="mission-text">私たちの目標は「見積書をぶっ壊して、リフォーム業界をつくりなおす」こと。<br/>
+           一件でも多くの適正価格リフォームを実現するため、ぜひ拡散してください！</p>
+<div class="fire-hashtag">🔥 #見積書ぶっ壊し運動 急拡大中 🔥</div>
+<div class="company-info">
+<p>運営：ミツモリ鑑定団プロジェクト</p>
+<p>提携業者基準：施工実績10件以上・業界歴5年以上・顧客満足度評価4.0以上・保証制度あり</p>
+<p>LINEアカウント開設：2024年7月</p>
+<p>※当サービスは実験的に運営しているため、対応エリアや案件数に制限がある場合があります</p>
+</div>
+</div>
+</div>
+<!-- スクロールトップボタン -->
+<div class="scroll-to-top">
+<i class="fa fa-chevron-up"></i>
+</div>
+<!-- JavaScript -->
+<script>
+       // ケーススタディデータ
+       const caseStudies = [
+           {
+               title: "お風呂リフォーム見積もり：92万円",
+               action: "鑑定団「この見積書、ぶっ壊しに行くわ」",
+               offers: [
+                   { price: "68万円", details: "標準的な素材で十分な品質を確保。コスト削減のポイントを明確に説明。", isBest: true },
+                   { price: "75万円", details: "高グレード素材使用。防カビ加工と5年保証付き。", isBest: false },
+                   { price: "85万円", details: "プレミアムプラン。保証10年と24時間サポート。", isBest: false }
+               ],
+               originalCompany: "元業者「ぐぬぬぬぬ...」",
+               savings: "24万円お得！",
+               location: "横浜の実家"
+           },
+           {
+               title: "外壁塗装工事見積もり：148万円",
+               action: "鑑定団「これは明らかに水増しされてる。ぶっ壊してみよう」",
+               offers: [
+                   { price: "83万円", details: "同等品質の塗料を使用。不要な下地処理をカット。", isBest: true },
+                   { price: "95万円", details: "高耐久塗料使用で10年保証付き。", isBest: false },
+                   { price: "102万円", details: "最高級塗料と15年保証。雨漏り保険付き。", isBest: false }
+               ],
+               originalCompany: "元業者「こ、これは当社の営業戦略が...」",
+               savings: "65万円お得！",
+               location: "友人宅マンション"
+           },
+           {
+               title: "キッチンリフォーム見積もり：185万円",
+               action: "鑑定団「おや？このシステムキッチン、定価の倍近い...粉砕しましょう」",
+               offers: [
+                   { price: "123万円", details: "同メーカー同グレードで大幅値引き。工事費適正化。", isBest: true },
+                   { price: "142万円", details: "食洗機とIHクッキングヒーターをグレードアップ。", isBest: false },
+                   { price: "156万円", details: "オーダーメイド収納と電動昇降機能付き。", isBest: false }
+               ],
+               originalCompany: "元業者「そ、そんなに安くできるわけ...」",
+               savings: "62万円お得！",
+               location: "自分の新居"
+           }
+       ];
+       
+       let currentCase = 0;
+       
+       // ケーススタディを更新する関数
+       function updateCaseStudy() {
+           const caseData = caseStudies[currentCase];
+           const container = document.getElementById('case-study-container');
+           
+           // タイトルと説明を更新
+           container.querySelector('.case-title').textContent = caseData.title;
+           container.querySelector('.case-action').textContent = caseData.action;
+           
+           // オファーを更新
+           const offersContainer = container.querySelector('.offers-grid');
+           let offersHTML = '';
+           
+           caseData.offers.forEach(offer => {
+               offersHTML += `
+               <div class="offer ${offer.isBest ? 'best' : ''}">
+                   <div class="offer-price">${offer.price} ${offer.isBest ? '✓' : ''}</div>
+                   <div class="offer-details">${offer.details}</div>
+               </div>
+               `;
+           });
+           
+           offersContainer.innerHTML = offersHTML;
+           
+           // 元業者コメントを更新
+           container.querySelector('.original-company').textContent = caseData.originalCompany;
+           
+           // 節約額と場所を更新
+           container.querySelector('.case-summary').innerHTML = 
+               `${caseData.savings}<span class="case-location">（${caseData.location}の事例）</span>`;
+           
+           // ナビゲーションドットを更新
+           const dots = document.querySelectorAll('.case-dot');
+           dots.forEach((dot, index) => {
+               if (index === currentCase) {
+                   dot.classList.add('active');
+               } else {
+                   dot.classList.remove('active');
+               }
+           });
+       }
+       
+       // 次のケースに進む関数
+       function nextCase() {
+           currentCase = (currentCase + 1) % caseStudies.length;
+           updateCaseStudy();
+       }
+       
+       // 特定のケースに移動する関数
+       function changeCase(index) {
+           currentCase = index;
+           updateCaseStudy();
+       }
+       
+       // 要素が画面内に入ったらアニメーション表示
+       function handleScroll() {
+           const fadeElements = document.querySelectorAll('.fade-in');
+           const scaleElements = document.querySelectorAll('.scale-in');
+           const scrollToTop = document.querySelector('.scroll-to-top');
+           
+           // 要素が画面内かチェックする関数
+           function isInViewport(element, offset = 100) {
+               const rect = element.getBoundingClientRect();
+               return (
+                   rect.top <= (window.innerHeight - offset) &&
+                   rect.bottom >= offset
+               );
+           }
+           
+           // fade-in アニメーション
+           fadeElements.forEach(element => {
+               if (isInViewport(element)) {
+                   element.classList.add('visible');
+               }
+           });
+           
+           // scale-in アニメーション
+           scaleElements.forEach(element => {
+               if (isInViewport(element)) {
+                   element.classList.add('visible');
+               }
+           });
+           
+           // スクロールトップボタン表示制御
+           if (window.scrollY > 300) {
+               scrollToTop.classList.add('visible');
+           } else {
+               scrollToTop.classList.remove('visible');
+           }
+       }
+       
+       // ページロード時の処理
+       document.addEventListener('DOMContentLoaded', function() {
+           // ページトップへスクロール
+           const scrollToTopButton = document.querySelector('.scroll-to-top');
+           scrollToTopButton.addEventListener('click', () => {
+               window.scrollTo({
+                   top: 0,
+                   behavior: 'smooth'
+               });
+           });
+           
+           // スクロールイベントリスナー
+           window.addEventListener('scroll', handleScroll);
+           
+           // 初回実行
+           handleScroll();
+           
+           // ケーススタディ初期化
+           updateCaseStudy();
+           
+           // ダイアログのホバーエフェクト
+           const agentBubble = document.querySelector('.dialogue-bubble.agent');
+           agentBubble.addEventListener('mouseenter', function() {
+               const shimmer = this.querySelector('.shimmer');
+               shimmer.style.animation = 'shimmer 1.5s infinite';
+           });
+           
+           agentBubble.addEventListener('mouseleave', function() {
+               const shimmer = this.querySelector('.shimmer');
+               shimmer.style.animation = 'none';
+           });
+           
+           // LINEボタンのホバーエフェクト
+           const lineButtons = document.querySelectorAll('.btn-line'); document.querySelectorAll('.btn-line');
+          lineButtons.forEach(button => {
+               button.addEventListener('mouseenter', function() {
+                   const shimmer = this.querySelector('.shimmer');
+                   shimmer.style.animation = 'shimmer 1.5s infinite';
+               });
+               
+               button.addEventListener('mouseleave', function() {
+                   const shimmer = this.querySelector('.shimmer');
+                   shimmer.style.animation = 'none';
+               });
+           });
+       });
+   </script>
+<!-- 追従バナー -->
+<div class="line-fixed-banner">
+<a class="line-banner-button" href="https://lin.ee/g62jgxI">
+<span class="icon">💬</span>
+<span class="text">LINEで送る</span>
+</a>
+</div>
+</body>
+</html>
