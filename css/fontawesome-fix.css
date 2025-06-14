@@ -1,0 +1,55 @@
+/* FontAwesome修正用CSS */
+
+/* FontAwesomeアイコンのパス修正 */
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("../fa-solid-900.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../fa-regular-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Brands';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../fa-brands-400.woff2") format("woff2");
+}
+
+/* 私たちが大切にしている2つの想いセクションのアイコン修正 */
+.value-icon-shield {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  background-image: url('../img/shield-icon.svg');
+  background-size: 40px 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  background-color: #e0f2fe;
+  box-shadow: 0 6px 15px rgba(14, 165, 233, 0.1);
+  margin-bottom: 1.2rem;
+}
+
+.value-icon-handshake {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  background-image: url('../img/handshake-icon.svg');
+  background-size: 40px 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  background-color: #e0f2fe;
+  box-shadow: 0 6px 15px rgba(14, 165, 233, 0.1);
+  margin-bottom: 1.2rem;
+}

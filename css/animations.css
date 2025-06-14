@@ -1,0 +1,126 @@
+/* animations.css */
+
+/* --- Subtle Scroll Animations --- */
+.animate-on-scroll {
+    opacity: 0;
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.animate-on-scroll.fade-in {
+    transform: translateY(20px); /* Start slightly lower */
+}
+
+.animate-on-scroll.fade-in-up-strong {
+    transform: translateY(50px); /* Start lower for a more pronounced effect */
+}
+
+.animate-on-scroll.fade-in-left {
+    transform: translateX(-40px);
+}
+
+.animate-on-scroll.fade-in-right {
+    transform: translateX(40px);
+}
+
+.animate-on-scroll.scale-in {
+    transform: scale(0.9);
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+}
+
+/* --- Hover Animations & Transitions (can be added to existing elements or new ones) --- */
+
+/* Example: Button hover effect enhancement */
+.btn {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; 
+}
+
+.btn-warm-accent {
+    background: var(--warm-accent-color);
+    color: white;
+    border: 2px solid var(--warm-accent-color);
+}
+
+.btn-warm-accent:hover {
+    background: white;
+    color: var(--warm-accent-color);
+    border-color: var(--warm-accent-color);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(255, 140, 66, 0.25);
+}
+
+
+/* Example: Card hover lift */
+.card-lift-hover {
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.card-lift-hover:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Specific Section Animations --- */
+
+/* Hero Section Elements - more dynamic entry */
+.hero-title.animate-on-scroll.is-visible,
+.hero-subtitle.animate-on-scroll.is-visible,
+.hero-tags.animate-on-scroll.is-visible,
+.hero-cta.animate-on-scroll.is-visible {
+    transition-delay: 0.1s; /* Stagger hero elements slightly if needed */
+}
+
+.service-icon-item.animate-on-scroll {
+    transition-delay: calc(var(--animation-order, 0) * 0.15s + 0.2s); /* Stagger service icons */
+}
+
+/* Feature cards - staggered animation */
+.features-grid .feature-card.animate-on-scroll {
+    transition-delay: calc(var(--animation-order, 0) * 0.1s + 0.1s);
+}
+
+/* Testimonial cards - staggered animation */
+.testimonials-grid .testimonial-card.animate-on-scroll {
+    transition-delay: calc(var(--animation-order, 0) * 0.1s + 0.1s);
+}
+
+/* Origin Story elements */
+.origin-story-content .value-item.animate-on-scroll {
+     transition-delay: calc(var(--animation-order, 0) * 0.15s + 0.1s);
+}
+
+/* Add a subtle pulse to the main CTA button in hero */
+.hero-cta .btn:first-child {
+    animation: pulse-primary 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-primary {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        transform: scale(1.03);
+        box-shadow: 0 8px 25px rgba(0, 120, 212, 0.3); /* Shadow color related to main color */
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Style for elements that are revealed on scroll */
+[data-scroll-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+[data-scroll-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+

@@ -1,0 +1,11 @@
+/* LINEボタン色修正用CSS */
+
+.btn-line {
+    background: var(--line-color) !important; /* LINE公式カラー */
+    color: white !important;
+}
+
+.btn-line:hover {
+    background: #05a543 !important; /* Darker LINE green */
+    color: white !important;
+}

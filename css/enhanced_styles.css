@@ -1,0 +1,242 @@
+/* enhanced_styles.css */
+
+/* --- General Refinements --- */
+body {
+    font-family: 'Noto Sans JP', "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+    color: #333; /* Slightly softer black for text */
+    background-color: #fdfdfd; /* Slightly warmer off-white background */
+}
+
+:root {
+    --main-color: #0078d4; /* A slightly more refined blue */
+    --accent-color: #005a9e; /* A deeper blue for accents */
+    --secondary-color: #5db8fa; /* A lighter, friendly blue */
+    --warm-accent-color: #ff8c42; /* A warm, inviting accent (e.g., for CTAs or highlights) */
+    --dark-color: #1f2937; /* Dark grey for text, slightly softer than pure black */
+    --light-color: #f9fafb; /* Light grey for backgrounds */
+    --soft-blue: #e0f2fe; 
+    --softer-blue: #f0f8ff; /* Alice blue - very light */
+    --soft-bg: #f4f7f9; /* Soft background for sections */
+    --gradient-start: var(--main-color);
+    --gradient-end: var(--accent-color);
+    --premium-gold: #b08d57; /* A touch of gold for a premium feel */
+}
+
+.container {
+    max-width: 1140px; /* Slightly narrower for a more focused feel on larger screens */
+}
+
+/* --- Typography Enhancements --- */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700; /* Ensure headings are distinct */
+    color: var(--dark-color);
+}
+
+.hero-title {
+    font-size: 3.2rem; /* Slightly adjusted for balance */
+    color: white;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem; /* Adjusted for readability */
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.section-title h2 {
+    font-size: 2.5rem; /* Adjusted for section hierarchy */
+    margin-bottom: 1rem;
+}
+
+.section-title p {
+    font-size: 1.15rem; /* Slightly larger for better readability */
+    color: #555;
+    max-width: 750px;
+}
+
+/* --- Button Enhancements --- */
+.btn {
+    padding: 1rem 2.2rem; /* Slightly more padding */
+    font-size: 1.05rem;
+    border-radius: 8px; /* Slightly less rounded for a more modern feel */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, var(--main-color) 0%, var(--accent-color) 100%);
+}
+
+.btn:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    border: 2px solid var(--main-color);
+    color: var(--main-color);
+    background: white;
+}
+
+.btn-secondary:hover {
+    background: var(--softer-blue);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* --- Header Enhancements --- */
+.header {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+}
+
+.logo a {
+    font-size: 1.9rem;
+}
+
+.nav-menu a {
+    font-size: 1rem;
+    font-weight: 600; /* Slightly bolder for nav links */
+    color: #444;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: var(--main-color);
+}
+
+/* --- Hero Section Enhancements --- */
+.hero-section {
+    padding: 6rem 0;
+}
+
+/* --- Feature Card Enhancements --- */
+.feature-card {
+    border-radius: 15px; /* Softer rounding */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-top: 4px solid transparent;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid var(--warm-accent-color); /* Use warm accent for hover */
+}
+
+.feature-icon {
+    width: 70px; /* Slightly smaller */
+    height: 70px;
+    border-radius: 15px;
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, var(--soft-blue) 0%, var(--softer-blue) 100%);
+    box-shadow: 0 8px 20px rgba(14, 165, 233, 0.1);
+}
+
+.feature-card:hover .feature-icon {
+    background: linear-gradient(135deg, var(--warm-accent-color) 0%, #ff701a 100%);
+    color: white;
+}
+
+.feature-title {
+    font-size: 1.35rem;
+}
+
+/* --- Testimonial Card Enhancements --- */
+.testimonial-card {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid var(--soft-blue);
+}
+
+.testimonial-card:hover {
+    border-left-color: var(--warm-accent-color);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.testimonial-quote {
+    font-size: 1.1rem;
+}
+
+.author-avatar img {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--main-color);
+}
+
+/* --- Origin Story Section Enhancements --- */
+.origin-story-section {
+    background-color: var(--soft-bg); /* Consistent soft background */
+}
+
+.origin-story-content {
+    border-radius: 15px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+    padding: 2.5rem;
+}
+
+.origin-story-quote {
+    border-left: 4px solid var(--warm-accent-color);
+    background-color: #fff9f5; /* Very light warm background for quote */
+}
+
+.value-item {
+    border-radius: 12px;
+    border: 1px solid #e0e7ff; /* Lighter border */
+}
+
+.value-icon {
+    background: linear-gradient(135deg, var(--soft-blue) 0%, var(--softer-blue) 100%);
+    box-shadow: 0 5px 12px rgba(14, 165, 233, 0.08);
+}
+
+/* --- Operator Section Enhancements --- */
+.operator-section {
+    background: linear-gradient(135deg, var(--softer-blue) 0%, var(--soft-bg) 100%);
+}
+
+.operator-content {
+    border-radius: 15px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.07);
+    padding: 3rem;
+}
+
+/* --- FAQ Section Enhancements --- */
+.faq-item {
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+}
+
+.faq-question.active {
+    background-color: var(--soft-blue);
+    color: var(--accent-color);
+}
+
+/* --- Footer Enhancements --- */
+.footer {
+    background-color: var(--dark-color);
+    color: #a0aec0; /* Lighter grey for footer text */
+}
+
+.footer-logo a {
+     background: linear-gradient(135deg, var(--secondary-color) 0%, var(--main-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-nav a {
+    color: #cbd5e1;
+}
+
+.footer-nav a:hover {
+    color: var(--secondary-color);
+}
+
+.footer-socials a {
+    color: #cbd5e1;
+}
+
+.footer-socials a:hover {
+    color: var(--secondary-color);
+}
+
+.copyright {
+    color: #718096;
+    border-top: 1px solid #2d3748; /* Darker border in footer */
+}
+
+

@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ミツモリ鑑定団 | リフォーム見積書診断サービス</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<link href="css/animate.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* 全体のスタイル - 洗練されたプレミアムテーマ */
+        :root {
+            --main-color: #0ea5e9; /* メインカラー */
+            --accent-color: #0284c7; /* アクセントカラー */
+            --secondary-color: #38bdf8; /* 明るい水色 */
+            --dark-color: #0f172a; /* よりダークな色 */
+            --light-color: #f8fafc;
+            --success-color: #10b981; /* 緑 */
+            --warning-color: #f59e0b; /* 黄色 */
+            --line-color: #06C755;
+            --soft-blue: #dbeafe; /* 柔らかい水色 */
+            --softer-blue: #f0f9ff; /* さらに柔らかい水色 */
+            --soft-bg: #f8fafc; /* 全体背景用の薄い水色 */
+            --gradient-start: #0ea5e9; /* グラデーション開始色 */
+            --gradient-end: #0284c7; /* グラデーション終了色 */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans JP', "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+        }
+        
+        body {
+            background-color: var(--soft-bg);
+            color: var(--dark-color);
+            line-height: 1.7;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+        
+        @media (min-width: 768px) {
+            body {
+                font-size: 17px;
+            }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1.2rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: white;
+            background: linear-gradient(135deg, var(--main-color) 0%, var(--accent-color) 100%);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--main-color);
+            border: 2px solid var(--main-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--softer-blue);
+            border-color: var(--accent-color);
+        }
+
+        .btn-line {
+            background: var(--line-color);
+        }
+
+        .btn-line:hover {
+            background: #05a543; /* Darker LINE green */
+        }
+        
+        /* Header */
+        .header {
+            background-color: white;
+            padding: 1rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 0.8rem 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--main-color) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: opacity 0.3s ease;
+        }
+        .logo a:hover {
+            opacity: 0.8;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            font-size: 1.05rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--main-color), var(--accent-color));
+            transition: width 0.4s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--main-color);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .header .btn {
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
+        }
+        
+        .mobile-nav-toggle {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: var(--dark-color);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: white;
+            padding: 7rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before, .hero-section::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.07);
+            z-index: 0;
+        }
+        .hero-section::before {
+            width: 300px; height: 300px;
+            top: -100px; left: -100px;
+        }
+        .hero-section::after {
+            width: 400px; height: 400px;
+            bottom: -150px; right: -150px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .hero-title-line1 {
+        display: block;
+        }
+
+        .hero-title-line2 {
+        display: block;
+        }
+
+        .hero-subtitle {
+        font-size: 1.4rem;
+        margin-bottom: 2.5rem;
+        max-width: 800px;  /* 700px → 800px に変更 */
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0.9;
+        line-height: 1.7;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-tags span {
+            background: rgba(255,255,255,0.15);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .service-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .service-icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .service-icon-item:nth-child(1) { animation-delay: 0.2s; }
+        .service-icon-item:nth-child(2) { animation-delay: 0.4s; }
+        .service-icon-item:nth-child(3) { animation-delay: 0.6s; }
+
+        .service-icon-circle {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+        
+        .hero-cta {
+            margin-top: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (min-width: 576px) {
+            .hero-cta {
+                flex-direction: row;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .hero-cta {
+                margin-left: 0;
+                 margin-right: 0; /* Align to left on larger screens if hero content is left-aligned */
+            }
+             .hero-content {
+                text-align: left; /* Align hero text to left on larger screens */
+            }
+            .hero-title, .hero-subtitle, .hero-tags {
+                margin-left: 0;
+                margin-right: 0;
+                justify-content: flex-start;
+            }
+            .service-icons {
+                 justify-content: flex-start;
+            }
+        }
+        
+        .hero-cta .btn {
+            width: 100%;
+        }
+        
+        /* ====== 特徴セクション ====== */
+        .features-section {
+            padding: 7rem 0;
+            position: relative;
+        }
+        
+        .section-waves {
+            position: absolute;
+            top: -2px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3e%3cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%23f8fafc' opacity='.25'%3e%3c/path%3e%3cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' fill='%23f8fafc' opacity='.5'%3e%3c/path%3e%3cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23f8fafc'%3e%3c/path%3e%3c/svg%3e");
+            background-size: cover;
+            transform: rotate(180deg);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--dark-color);
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--main-color), var(--accent-color));
+            border-radius: 4px;
+        }
+        
+        .section-title p {
+            font-size: 1.3rem;
+            color: #475569;
+            max-width: 700px;
+            margin: 1.8rem auto 0;
+            line-height: 1.7;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 3rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-top: 5px solid transparent;
+            transform: translateY(0);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid var(--main-color);
+        }
+        
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.05) 0%, rgba(14, 165, 233, 0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        
+        .feature-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: var(--main-color);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 12px 30px rgba(14, 165, 233, 0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 20px 50px rgba(14, 165, 233, 0.25);
+            background: linear-gradient(135deg, var(--main-color) 0%, var(--accent-color) 100%);
+            color: white;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.3rem;
+            color: var(--dark-color);
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-title {
+            background: linear-gradient(135deg, var(--main-color) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .feature-text {
+            color: #475569;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+            margin-top: auto;
+        }
+        
+        /* ====== 実績セクション ====== */
+        .results-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #f1f5f9 100%);
+            padding: 7rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .results-section::before,
+        .results-section::after {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+        }
+        
+        .results-section::before {
+            top: -200px;
+            right: -100px;
+        }
+        
+        .results-section::after {
+            bottom: -200px;
+            left: -150px;
+        }
+        
+        .case-study-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            z-index: 2;
+            transition: all 0.5s ease;
+        }
+        
+        .case-study-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .case-dots {
+            display: flex;
+            gap: 1.2rem;
+            background-color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        }
+        
+        .case-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .case-dot.active {
+            background: linear-gradient(135deg, var(--main-color) 0%, var(--accent-color) 100%);
+            transform: scale(1.3);
+            box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
+        }
+        
+        .case-study-header {
+            padding: 3.5rem;
+            background: linear-gradient(135deg, #f0f9ff 0%, #f1f5f9 100%);
+            border-bottom: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        
+        .case-badge {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(135deg, var(--main-color) 0%, var(--accent-color) 100%);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.2);
+        }
+        
+        .case-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark-color);
+            margin-bottom: 1.2rem;
+        }
+        
+        .case-description {
+            color: #475569;
+            line-height: 1.7;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .case-study-content {
+            padding: 3.5rem;
+        }
+        
+        .case-result {
+            background: linear-gradient(135deg, #f0f9ff 0%, #f1f5f9 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .result-label {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: linear-gradient(135deg, var(--main-color) 0%, var(--accent-color) 100%);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.2);
+        }
+        
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            margin: 2rem 0;
+        }
+        
+        .offer-card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transform: scale(1);
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        .offer-price {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--main-color) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.8rem;
+        }
+        
+        .offer-price span {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .offer-description {
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .offer-details {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: auto;
+        }
+        
+        .savings-banner {
+            background: linear-gradient(135deg, var(--success-color) 0%, #059669 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.25);
+            margin-top: 2rem;
+        }
+        
+        /* ====== お客様の声セクション ====== */
+        .testimonials-section {
+            padding: 7rem 0;
+            background-color: var(--soft-bg);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-left: 6px solid transparent;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.09);
+            border-left-color: var(--main-color);
+        }
+        
+        .testimonial-quote {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #334155;
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .testimonial-quote::before {
+            content: "\f10d"; /* FontAwesome quote-left */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 2.5rem;
+            color: var(--main-color);
+            position: absolute;
+            left: -0.5rem;
+            top: -0.5rem;
+            opacity: 0.2;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: auto;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .author-avatar img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border: 3px solid white;
+        }
+        
+        .author-info {
+            color: var(--dark-color);
+        }
+        
+        .author-name {
+            font-weight: 700;
+            font-size: 1.15rem;
+            display: block;
+        }
+        
+        .author-details {
+            font-size: 0.95rem;
+            opacity: 0.7;
+        }
+        
+        /* ====== 運営者情報セクション ====== */
+        .operator-section {
+            padding: 7rem 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #f1f5f9 100%);
+        }
+        
+        .operator-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            padding: 4rem;
+            text-align: center;
+        }
+        
+        .operator-logo {
+            max-width: 250px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        .operator-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--dark-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .operator-text {
+            color: #475569;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .operator-table {
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+            margin-bottom: 2.5rem;
+        }
+        
+        .operator-table th,
+        .operator-table td {
+            padding: 1.2rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .operator-table th {
+            background-color: #f8fafc;
+            font-weight: 600;
+            width: 35%;
+            color: var(--dark-color);
+        }
+        
+        .operator-table td {
+            color: #334155;
+        }
+        
+        .operator-table tr:last-child th,
+        .operator-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .operator-cta .btn {
+            min-width: 250px;
+        }
+        
+        /* ====== FAQセクション ====== */
+        .faq-section {
+            padding: 7rem 0;
+        }
+        
+        .faq-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .faq-item {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: #f0f9ff;
+        }
+        
+        .faq-question.active {
+            background-color: #e0f2fe;
+            color: var(--accent-color);
+        }
+        
+        .faq-icon {
+            font-size: 1.3rem;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .faq-question.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .faq-answer p {
+            padding: 0 2rem 2rem;
+            line-height: 1.8;
+            color: #475569;
+        }
+        
+        .faq-answer.active {
+            max-height: 500px; /* Adjust as needed */
+            padding-bottom: 0; /* Padding is on the p element */
+        }
+        
+        /* ====== フッター ====== */
+        .footer {
+            background-color: var(--dark-color);
+            color: #cbd5e1;
+            padding: 5rem 0 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem;
+        }
+        
+        .footer-logo a {
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--main-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-logo a:hover {
+            opacity: 0.8;
+        }
+        
+        .footer-nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem 2.5rem;
+        }
+        
+        .footer-nav a {
+            text-decoration: none;
+            color: #cbd5e1;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-nav a:hover {
+            color: var(--main-color);
+        }
+        
+        .footer-socials {
+            display: flex;
+            gap: 1.8rem;
+        }
+        
+        .footer-socials a {
+            color: #cbd5e1;
+            font-size: 1.6rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .footer-socials a:hover {
+            color: var(--main-color);
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+        
+        /* ====== レスポンシブデザイン ====== */
+        @media (max-width: 991px) {
+            .nav-menu {
+                display: none; /* Hide for now, implement mobile menu later */
+            }
+            .mobile-nav-toggle {
+                display: block;
+            }
+            .header .btn {
+                display: none; /* Hide header button on smaller screens initially */
+            }
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            .section-title h2 {
+                font-size: 2.3rem;
+            }
+            .section-title p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .hero-title {
+                font-size: 2.4rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+                max-width: 100%; /* この行を追加 */
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .feature-card {
+                padding: 2rem;
+            }
+            .case-study-header, .case-study-content {
+                padding: 2.5rem;
+            }
+            .case-title {
+                font-size: 1.7rem;
+            }
+            .case-description {
+                font-size: 1.1rem;
+            }
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+            .savings-banner {
+                font-size: 1.5rem;
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .testimonial-card {
+                padding: 2rem;
+            }
+            .operator-content {
+                padding: 2.5rem;
+            }
+            .operator-title {
+                font-size: 1.8rem;
+            }
+            .faq-question {
+                font-size: 1.1rem;
+                padding: 1.5rem;
+            }
+            .faq-answer p {
+                padding: 0 1.5rem 1.5rem;
+            }
+        }
+        
+        @media (max-width: 575px) {
+            .hero-cta {
+                flex-direction: column;
+            }
+            .hero-cta .btn {
+                width: 100%;
+            }
+            .service-icons {
+                gap: 2rem;
+            }
+            .service-icon-circle {
+                width: 60px;
+                height: 60px;
+            }
+            .service-icon-text {
+                font-size: 1rem;
+            }
+            .footer-nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animated-feature {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .animated-feature.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* スクロールに応じたアニメーション用 */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .animate-on-scroll.fade-in-up {
+            transform: translateY(50px);
+        }
+        
+        .animate-on-scroll.fade-in-left {
+            transform: translateX(-50px);
+        }
+        
+        .animate-on-scroll.fade-in-right {
+            transform: translateX(50px);
+        }
+        
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0) translateX(0);
+        }
+        
+        /* JavaScriptで制御するFAQアコーディオン用のスタイル */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out; /* paddingもトランジション対象に */
+            padding: 0 2rem; /* 初期状態では上下パディング0、左右は維持 */
+        }
+
+        .faq-answer.active {
+            max-height: 500px; /* 十分な高さを確保 */
+            padding: 0 2rem 2rem 2rem; /* 開いたときに上下パディングを追加 */
+        }
+
+        .faq-question .faq-icon {
+            transition: transform 0.3s ease-out;
+        }
+
+        .faq-question.active .faq-icon {
+            transform: rotate(135deg); /* FontAwesomeのプラスがバツになるような回転 */
+        }
+
+    
+
+.new-avatar-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--main-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem; /* Adjusted for 70px circle */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 3px solid white;
+}
+
+/* スクロールインジケーター */
+.scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .scroll-arrow {
+            font-size: 1.2rem;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* モバイル対応 */
+        @media (max-width: 767px) {
+            .scroll-indicator {
+                bottom: 20px;
+            }
+        }
+
+        /* スクロール追従バナー */
+.floating-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--main-color) 0%, var(--accent-color) 100%);
+    color: white;
+    padding: 1.2rem 3rem;
+    border-radius: 60px;
+    box-shadow: 0 8px 30px rgba(14, 165, 233, 0.3);
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border: none;
+    backdrop-filter: blur(10px);
+    min-width: 280px;
+}
+
+.floating-banner.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.floating-banner:hover {
+    transform: translateX(-50%) translateY(-5px);
+    box-shadow: 0 15px 40px rgba(14, 165, 233, 0.4);
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--main-color) 100%);
+}
+
+.floating-banner i {
+    font-size: 1.2rem;
+}
+
+/* パルス効果 */
+.floating-banner.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 8px 30px rgba(14, 165, 233, 0.3);
+    }
+    50% {
+        box-shadow: 0 8px 30px rgba(14, 165, 233, 0.6), 0 0 20px rgba(14, 165, 233, 0.3);
+    }
+    100% {
+        box-shadow: 0 8px 30px rgba(14, 165, 233, 0.3);
+    }
+}
+
+/* モバイル用の調整 */
+@media (max-width: 767px) {
+    .floating-banner {
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+        transform: none;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        justify-content: center;
+    }
+
+    .floating-banner.visible {
+        transform: none;
+    }
+
+    .floating-banner:hover {
+        transform: translateY(-3px);
+    }
+}
+</style>
+</head>
+<body>
+<!-- Header -->
+<header class="header" id="header">
+<div class="container header-content">
+<div class="logo">
+<a href="#">ミツモリ鑑定団</a>
+</div>
+<nav class="nav-menu" id="nav-menu">
+<ul>
+<li><a class="active" href="#hero">トップ</a></li>
+<li><a href="#features">サービス特徴</a></li>
+<li><a href="#results">診断事例</a></li>
+<li><a href="#testimonials">お客様の声</a></li>
+<li><a href="#faq">よくある質問</a></li>
+</ul>
+</nav>
+<a class="btn" href="#contact">無料診断する</a>
+<button aria-label="Toggle navigation" class="mobile-nav-toggle" id="mobile-nav-toggle">
+<i class="fas fa-bars"></i>
+</button>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="hero-section" id="hero">
+<div class="container hero-content">
+    <h1 class="hero-title wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+        <span class="hero-title-line1">あなたの見積書、</span>
+        <span class="hero-title-line2">プロが無料で診断します</span>
+        </h1>
+<p class="hero-subtitle wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">写真を送るだけ。リフォームの適正価格を知って、安心してリフォームを進めましょう。</p>
+<div class="hero-tags wow animate__animated animate__fadeInUp" data-wow-delay="0.6s">
+<span>#見積無料診断</span>
+<span>#平均32%お得に</span>
+<span>#忙しい人でも簡単</span>
+</div>
+<div class="hero-cta wow animate__animated animate__fadeInUp" data-wow-delay="0.8s">
+<a class="btn" href="#contact"><i class="fas fa-paper-plane"></i> 見積書を送る</a>
+<a class="btn btn-line" href="https://lin.ee/c8z38Vt" target="_blank"><i class="fab fa-line"></i> LINEで相談</a>
+</div>
+</div>
+<!-- ここにスクロールインジケーターを追加 ↓ -->
+<div class="scroll-indicator">
+    <span>スクロールして詳細を見る</span>
+    <div class="scroll-arrow">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</div>
+</section>
+<!-- 特徴セクション -->
+<section class="features-section" id="features">
+<div class="section-waves"></div>
+<div class="container">
+<div class="section-title wow animate__animated animate__fadeInUp">
+<h2>ミツモリ鑑定団の３つの特徴</h2>
+<p>私たちは、お客様が安心してリフォームを進められるよう、透明性の高い情報提供と専門的なサポートをお約束します。</p>
+</div>
+<div class="features-grid">
+<div class="feature-card wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+<div class="feature-icon"><i class="fas fa-user-shield"></i></div>
+<h3 class="feature-title">専門家による診断</h3>
+<p class="feature-text">建築士、リフォームコーディネーター、元リフォーム会社の営業マネージャーなど、業界経験10年以上のプロフェッショナルが見積もりを診断します。プロの目で適正価格と工事の質をしっかり見極めます。</p>
+</div>
+<div class="feature-card wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">
+<div class="feature-icon"><i class="fas fa-bolt"></i></div>
+<h3 class="feature-title">簡単・スピーディ</h3>
+<p class="feature-text">見積書の写真をLINEで送るだけ。来店不要で、スマホだけで完結します。忙しい方でも移動時間なしで相談できるので、共働き夫婦や子育て中の方にも好評です。最短当日に診断結果をご連絡します。</p>
+</div>
+<div class="feature-card wow animate__animated animate__fadeInUp" data-wow-delay="0.6s">
+<div class="feature-icon"><i class="fas fa-handshake-angle"></i></div>
+<h3 class="feature-title">完全無料のサービス</h3>
+<p class="feature-text">当サービスは完全無料でご利用いただけます。ご紹介する業者から成功報酬で運営しているため、お客様からいただく費用は一切ありません。安心して何度でもご相談ください。</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 実績セクション -->
+<section class="results-section" id="results">
+<div class="container">
+<div class="section-title wow animate__animated animate__fadeInUp">
+<h2>診断事例</h2>
+<p>実際にミツモリ鑑定団が診断したリフォーム見積もりの事例をご紹介します</p>
+</div>
+<div class="case-study-container wow animate__animated animate__fadeInUp">
+<div class="case-study-nav">
+<div class="case-dots">
+<div class="case-dot active" data-case="1"></div>
+<div class="case-dot" data-case="2"></div>
+<div class="case-dot" data-case="3"></div>
+</div>
+</div>
+<div class="case-study-slide active" data-case-content="1">
+<div class="case-study-header">
+<span class="case-badge">キッチンリフォーム</span>
+<h3 class="case-title">キッチンリフォーム見積もり：92万円</h3>
+<p class="case-description">「新婚生活を始める新居のキッチン。でも見積もりが予算オーバー…」</p>
+</div>
+<div class="case-study-content">
+<div class="case-result">
+<span class="result-label">診断結果</span>
+<div class="offers-grid">
+<div class="offer-card">
+<div class="offer-price">68<span>万円</span></div>
+<p class="offer-description">同等品質のシステムキッチンで工事内容も同じ。追加工事が不要な提案で費用削減しつつ、品質は維持。</p>
+</div>
+<div class="offer-card">
+<div class="offer-price">75<span>万円</span></div>
+<p class="offer-description">グレードアップした食洗機と収納オプション付き。5年保証付き。</p>
+</div>
+<div class="offer-card">
+<div class="offer-price">85<span>万円</span></div>
+<p class="offer-description">プレミアムプラン。10年保証と24時間サポート付き。</p>
+</div>
+</div>
+<div class="savings-banner">24万円お得になりました！</div>
+</div>
+<p class="case-client-feedback">「予算内に収まり、新生活を安心してスタートできました。急いでいたので相談できて本当に良かったです」</p>
+<p class="case-client-name">東京都・Aさん夫妻（28歳・32歳）</p>
+</div>
+</div>
+<div class="case-study-slide" data-case-content="2">
+<div class="case-study-header">
+<span class="case-badge">外壁塗装</span>
+<h3 class="case-title">外壁塗装見積もり：150万円</h3>
+<p class="case-description">「築15年の我が家。そろそろ外壁塗装が必要だけど、見積もりが高くて…」</p>
+</div>
+<div class="case-study-content">
+<div class="case-result">
+<span class="result-label">診断結果</span>
+<div class="offers-grid">
+<div class="offer-card">
+<div class="offer-price">110<span>万円</span></div>
+<p class="offer-description">高品質シリコン塗料を使用。足場費用込みで、丁寧な3度塗りを実施。</p>
+</div>
+<div class="offer-card">
+<div class="offer-price">125<span>万円</span></div>
+<p class="offer-description">遮熱・断熱効果のある特殊塗料を使用。夏涼しく冬暖かい家に。</p>
+</div>
+<div class="offer-card">
+<div class="offer-price">140<span>万円</span></div>
+<p class="offer-description">最高級フッ素塗料で20年以上の耐久性。長期的に見てお得なプラン。</p>
+</div>
+</div>
+<div class="savings-banner">40万円お得になりました！</div>
+</div>
+<p class="case-client-feedback">「専門家のアドバイスで、品質を落とさずに大幅なコストダウンが実現しました。感謝しています」</p>
+<p class="case-client-name">神奈川県・Bさん（45歳）</p>
+</div>
+</div>
+<div class="case-study-slide" data-case-content="3">
+<div class="case-study-header">
+<span class="case-badge">浴室リフォーム</span>
+<h3 class="case-title">浴室リフォーム見積もり：120万円</h3>
+<p class="case-description">「古くなったお風呂を新しくしたい。でも複数の業者から見積もりを取る時間がない…」</p>
+</div>
+<div class="case-study-content">
+<div class="case-result">
+<span class="result-label">診断結果</span>
+<div class="offers-grid">
+<div class="offer-card">
+<div class="offer-price">88<span>万円</span></div>
+<p class="offer-description">標準的なユニットバスプラン。清掃性が高く、経済的な選択肢。</p>
+</div>
+<div class="offer-card">
+<div class="offer-price">105<span>万円</span></div>
+<p class="offer-description">人気の高機能ユニットバス。浴室乾燥機、追い焚き機能付き。</p>
+</div>
+<div class="offer-card">
+<div class="offer-price">115<span>万円</span></div>
+<p class="offer-description">デザイン性と機能性を両立したハイグレードプラン。肩湯、ジェットバス付き。</p>
+</div>
+</div>
+<div class="savings-banner">32万円お得になりました！</div>
+</div>
+<p class="case-client-feedback">「LINEだけで複数の提案をもらえて、比較検討が楽でした。納得のいくリフォームができそうです」</p>
+<p class="case-client-name">埼玉県・Cさん（58歳）</p>
+</div>
+</div>
+<div class="case-controls">
+<button class="case-prev"><i class="fas fa-chevron-left"></i> 前の事例を見る</button>
+<button class="case-next">次の事例を見る <i class="fas fa-chevron-right"></i></button>
+</div>
+</div>
+</div>
+</section>
+<!-- お客様の声セクション -->
+<section class="testimonials-section" id="testimonials">
+<div class="container">
+<div class="section-title wow animate__animated animate__fadeInUp">
+<h2>お客様の声</h2>
+<p>ミツモリ鑑定団をご利用いただいたお客様からの喜びの声をご紹介します。</p>
+</div>
+<div class="testimonials-grid">
+<div class="testimonial-card wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+<p class="testimonial-quote">「相見積もりを取る時間も知識もなかったので、専門家の方に相談できて本当に助かりました。LINEで写真を送るだけで、すぐに的確なアドバイスをいただけたので、スムーズにリフォーム会社を決めることができました。」</p>
+<div class="testimonial-author">
+<div class="author-avatar"><div class="new-avatar-icon"><i class="fas fa-user-friends"></i></div></div>
+<div class="author-info">
+<span class="author-name">新婚ご夫婦 様（東京都・20代後半）</span>
+<span class="author-details">キッチンリフォーム</span>
+</div>
+</div>
+</div>
+<div class="testimonial-card wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">
+<p class="testimonial-quote">「訪問営業に来た業者さんの見積もりが高すぎる気がして不安でしたが、ミツモリ鑑定団さんに診断してもらったら、やはり適正価格よりかなり高かったことが判明。おかげで無駄な出費を抑えられました。」</p>
+<div class="testimonial-author">
+<div class="author-avatar"><div class="new-avatar-icon"><i class="fas fa-home"></i></div></div>
+<div class="author-info">
+<span class="author-name">マイホームを守るご主人 様（神奈川県・50代）</span>
+<span class="author-details">外壁塗装</span>
+</div>
+</div>
+</div>
+<div class="testimonial-card wow animate__animated animate__fadeInUp" data-wow-delay="0.6s">
+<p class="testimonial-quote">「リフォームは初めてで何もわからなかったので不安でしたが、担当の方がとても親身になって相談に乗ってくれました。専門用語もわかりやすく解説してくれて、安心して任せられました。仕上がりも大満足です！」</p>
+<div class="testimonial-author">
+<div class="author-avatar"><div class="new-avatar-icon"><i class="fas fa-smile"></i></div></div>
+<div class="author-info">
+<span class="author-name">笑顔あふれるご家族 様（埼玉県・40代）</span>
+<span class="author-details">浴室リフォーム</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 運営者情報セクション -->
+<section class="operator-section" id="operator-info">
+<div class="container">
+<div class="section-title wow animate__animated animate__fadeInUp">
+<h2>運営者情報</h2>
+</div>
+<div class="operator-content wow animate__animated animate__fadeInUp">
+<!-- <img src="img/logo-placeholder.png" alt="ミツモリ鑑定団 ロゴ" class="operator-logo"> -->
+<h3 class="operator-title">ミツモリ鑑定団について</h3>
+<p class="operator-text">
+                    ミツモリ鑑定団は、リフォームをご検討中のお客様が、適正価格で安心してリフォームを実現できるようサポートする無料の見積もり診断サービスです。業界経験豊富な専門家が、お客様の立場に立って、見積もり内容を徹底的にチェックし、最適なリフォームプランをご提案します。
+                </p>
+<table class="operator-table">
+<tbody>
+<tr>
+<th>サービス名</th>
+<td>ミツモリ鑑定団</td>
+</tr>
+<tr>
+<th>運営会社</th>
+<td>株式会社ティーマックス（teamax Inc.）</td>
+</tr>
+<tr>
+<th>所在地</th>
+<td>〒630-0222 奈良県生駒市壱分町171-1-202</td>
+</tr>
+<tr>
+<th>連絡先</th>
+<td>公式LINEよりお問い合わせください。</td>
+</tr>
+<tr>
+<th>事業内容</th>
+<td>リフォーム見積もり診断サービスの提供、リフォームに関する情報提供</td>
+</tr>
+</tbody>
+</table>
+<div class="operator-cta">
+<a class="btn" href="#contact"><i class="fas fa-file-invoice-dollar"></i> 無料診断を申し込む</a>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQセクション -->
+<section class="faq-section" id="faq">
+<div class="container">
+<div class="section-title wow animate__animated animate__fadeInUp">
+<h2>よくあるご質問</h2>
+</div>
+<div class="faq-grid wow animate__animated animate__fadeInUp">
+<div class="faq-item">
+<div class="faq-question">
+<span>診断サービスは本当に無料ですか？</span>
+<i class="fas fa-plus faq-icon"></i>
+</div>
+<div class="faq-answer">
+<p>はい、完全に無料です。お客様から費用をいただくことは一切ありません。当サービスは提携リフォーム会社からの紹介料で運営されています。</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">
+<span>どんなリフォームの見積もりでも診断してもらえますか？</span>
+<i class="fas fa-plus faq-icon"></i>
+</div>
+<div class="faq-answer">
+<p>キッチン、浴室、トイレ、外壁塗装、内装、エクステリアなど、住宅に関するあらゆるリフォームの見積もりに対応しています。お気軽にご相談ください。</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">
+<span>診断結果はどのくらいでわかりますか？</span>
+<i class="fas fa-plus faq-icon"></i>
+</div>
+<div class="faq-answer">
+<p>見積もり内容や混雑状況にもよりますが、最短で当日、通常は1〜3営業日以内に診断結果をご連絡いたします。お急ぎの場合はその旨お伝えください。</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">
+<span>診断後、必ずその業者に依頼しなければいけませんか？</span>
+<i class="fas fa-plus faq-icon"></i>
+</div>
+<div class="faq-answer">
+<p>いいえ、そのようなことは一切ありません。診断結果はあくまで参考情報としてご活用ください。最終的にどの業者に依頼されるかはお客様の自由です。</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">
+<span>地方在住でも利用できますか？</span>
+<i class="fas fa-plus faq-icon"></i>
+</div>
+<div class="faq-answer">
+<p>はい、全国どこにお住まいの方でもご利用いただけます。LINEやお電話、メールでのやり取りが中心となりますので、地域による制約はありません。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="footer">
+<div class="container footer-content">
+<div class="footer-logo">
+<a href="#">ミツモリ鑑定団</a>
+</div>
+<nav class="footer-nav">
+<ul>
+<li><a href="#hero">トップ</a></li>
+<li><a href="#features">サービス特徴</a></li>
+<li><a href="#results">診断事例</a></li>
+<li><a href="#testimonials">お客様の声</a></li>
+<li><a href="#faq">よくある質問</a></li>
+<li><a href="#operator-info">運営者情報</a></li>
+<li><a href="#">プライバシーポリシー</a></li>
+<li><a href="#">利用規約</a></li>
+</ul>
+</nav>
+<div class="footer-socials">
+<a aria-label="Facebook" href="#"><i class="https://lin.ee/c8z38Vt"></i></a>
+<a aria-label="Twitter" href="#"><i class="https://lin.ee/c8z38Vt"></i></a>
+<a aria-label="Instagram" href="#"><i class="https://lin.ee/c8z38Vt"></i></a>
+<a aria-label="LINE" href="https://lin.ee/c8z38Vt" target="_blank"><i class="fab fa-line"></i></a>
+</div>
+<div class="copyright">
+                © 2025 ミツモリ鑑定団. All Rights Reserved.
+            </div>
+</div>
+</footer>
+
+<!-- スクロール追従バナー -->
+<a href="https://lin.ee/c8z38Vt" target="_blank" class="floating-banner" id="floatingBanner">
+    <i class="fab fa-line"></i>
+    <span>無料で見積もり診断</span>
+    <i class="fas fa-arrow-right"></i>
+</a>
+<script>
+        // Header scroll effect
+        const header = document.getElementById("header");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll(".nav-menu a[href^=\"#\"], .footer-nav a[href^=\"#\"]").forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute("href");
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: "smooth" });
+                    // Update active link in header
+                    document.querySelectorAll(".nav-menu a").forEach(link => link.classList.remove("active"));
+                    this.classList.add("active");
+                }
+            });
+        });
+
+        // Mobile navigation toggle
+        const mobileNavToggle = document.getElementById("mobile-nav-toggle");
+        const navMenu = document.getElementById("nav-menu");
+        if (mobileNavToggle && navMenu) {
+            mobileNavToggle.addEventListener("click", () => {
+                navMenu.classList.toggle("active"); // You'll need to style .nav-menu.active
+                mobileNavToggle.querySelector("i").classList.toggle("fa-bars");
+                mobileNavToggle.querySelector("i").classList.toggle("fa-times");
+            });
+        }
+
+        // Case study slider
+        const caseDots = document.querySelectorAll(".case-dot");
+        const caseSlides = document.querySelectorAll(".case-study-slide");
+        const casePrevBtn = document.querySelector(".case-prev");
+        const caseNextBtn = document.querySelector(".case-next");
+        let currentCase = 1;
+
+        function showCase(caseNumber) {
+            caseSlides.forEach(slide => {
+                slide.classList.remove("active");
+                if (slide.dataset.caseContent == caseNumber) {
+                    slide.classList.add("active");
+                }
+            });
+            caseDots.forEach(dot => {
+                dot.classList.remove("active");
+                if (dot.dataset.case == caseNumber) {
+                    dot.classList.add("active");
+                }
+            });
+            currentCase = caseNumber;
+        }
+
+        caseDots.forEach(dot => {
+            dot.addEventListener("click", () => {
+                showCase(parseInt(dot.dataset.case));
+            });
+        });
+
+        if(casePrevBtn) {
+            casePrevBtn.addEventListener("click", () => {
+                currentCase = (currentCase === 1) ? caseSlides.length : currentCase - 1;
+                showCase(currentCase);
+            });
+        }
+
+        if(caseNextBtn) {
+            caseNextBtn.addEventListener("click", () => {
+                currentCase = (currentCase === caseSlides.length) ? 1 : currentCase + 1;
+                showCase(currentCase);
+            });
+        }
+        
+        // Initialize first case
+        if(caseSlides.length > 0) {
+            showCase(1);
+        }
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll(".faq-item");
+        faqItems.forEach(item => {
+            const question = item.querySelector(".faq-question");
+            const answer = item.querySelector(".faq-answer");
+            const icon = question.querySelector(".faq-icon");
+
+            question.addEventListener("click", () => {
+                const isActive = question.classList.contains("active");
+                
+                // Close all other answers
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.querySelector(".faq-question").classList.remove("active");
+                        otherItem.querySelector(".faq-answer").classList.remove("active");
+                        otherItem.querySelector(".faq-icon").classList.remove("fa-times");
+                        otherItem.querySelector(".faq-icon").classList.add("fa-plus");
+                    }
+                });
+
+                // Toggle current item
+                question.classList.toggle("active");
+                answer.classList.toggle("active");
+                icon.classList.toggle("fa-plus");
+                icon.classList.toggle("fa-times");
+            });
+        });
+
+        // Animate on scroll (Intersection Observer)
+        const animatedElements = document.querySelectorAll(".animate-on-scroll");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // WOW.js Initialization (if you decide to use it for more complex animations)
+        // new WOW().init(); // Make sure WOW.js library is included if you uncomment this
+        // スクロール追従バナーの制御
+window.addEventListener('scroll', function() {
+    const floatingBanner = document.getElementById('floatingBanner');
+    const heroSection = document.getElementById('hero');
+    
+    if (heroSection && floatingBanner) {
+        const heroHeight = heroSection.offsetHeight;
+        const scrollY = window.scrollY;
+        
+        // ヒーローセクションを70%通過したらバナーを表示
+        if (scrollY > heroHeight * 0.7) {
+            floatingBanner.classList.add('visible');
+            // 長時間スクロールしたらパルス効果を追加
+            if (scrollY > heroHeight * 1.5) {
+                floatingBanner.classList.add('pulse');
+            }
+        } else {
+            floatingBanner.classList.remove('visible');
+            floatingBanner.classList.remove('pulse');
+        }
+    }
+});
+
+// バナークリック時のアニメーション
+document.addEventListener('DOMContentLoaded', function() {
+    const floatingBanner = document.getElementById('floatingBanner');
+    if (floatingBanner) {
+        floatingBanner.addEventListener('click', function(e) {
+            // クリック時に少し拡大するアニメーション
+            this.style.transform = 'translateX(-50%) scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'translateX(-50%) scale(1)';
+            }, 150);
+        });
+    }
+});
+    </script>
+</body>
+</html>
